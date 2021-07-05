@@ -5,6 +5,7 @@ const express = require("express");
 const app = express();
 const helmet = require("helmet");
 const cors = require("cors");
+const logger = require("./middleware/logger");
 app.use(cors());
 
 const courses = require("./routes/courses");
@@ -12,7 +13,7 @@ const home = require("./routes/home");
 
 app.set("view engine", "pug");
 app.set("views", "./views");
-
+// app.use(logger())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));

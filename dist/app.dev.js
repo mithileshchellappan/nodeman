@@ -14,6 +14,8 @@ var helmet = require("helmet");
 
 var cors = require("cors");
 
+var logger = require("./middleware/logger");
+
 app.use(cors());
 
 var courses = require("./routes/courses");
@@ -21,7 +23,8 @@ var courses = require("./routes/courses");
 var home = require("./routes/home");
 
 app.set("view engine", "pug");
-app.set("views", "./views");
+app.set("views", "./views"); // app.use(logger())
+
 app.use(express.json());
 app.use(express.urlencoded({
   extended: true
